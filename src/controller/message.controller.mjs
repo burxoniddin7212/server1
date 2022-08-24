@@ -9,11 +9,11 @@ let messageController= {
     POST:(req, res) => {
         try {
             
+        } catch (error) {
             
-          } catch (error) {
-            console.log(error);
         }
     }
+    
 }
       
 
