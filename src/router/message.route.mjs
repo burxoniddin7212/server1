@@ -1,4 +1,5 @@
 import { Router } from "express";
+import messageController from "../controller/message.controller.mjs";
 
 
 let messageRouter = Router();
