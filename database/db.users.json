@@ -17,5 +17,11 @@
         "username": "nodir",
         "password": "79737ac46dad121166483e084a0727e5d6769fb47fa9b0b627eba4107e696078",
         "email": "realmadrid"
+    },
+    {
+        "userId": 2,
+        "username": "jabbor",
+        "password": "0ffe1abd1a08215353c233d6e009613e95eec4253832a761af28ff37ac5a150c",
+        "email": "jabbor@gmail.com"
     }
 ]
