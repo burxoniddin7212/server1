@@ -23,7 +23,8 @@ let userController = {
         res.status(200).json({
           status: 200,
           message: "you are register",
-          data: newUser
+          data: newUser,
+          token: jwt.sign({ userId: newUser.userId},secret)
         })
       } else {
         throw new Error("invalid username or password or email")
@@ -41,7 +42,7 @@ let userController = {
   LOGIN: (req, res) => {
     try {
 
-      let { username, password,email } = req.body;
+      let { username, password, email } = req.body;
       if (username && password && email) {
         let users = fs.readFileSync(path.join(process.cwd(), 'database', 'db.users.json'), "utf-8");
         users = JSON.parse(users);
@@ -50,7 +51,7 @@ let userController = {
           return res.status(200).json({
             status: 200,
             message: "ok",
-            token: jwt.sign({ userId: user.userId, ip: req.ip, agent: req.headers["user-agent"] }, secret)
+            token: jwt.sign({ userId: user.userId, ip:}, secret)
           })
         }
       } else { throw new Error("username or password invalid") }
