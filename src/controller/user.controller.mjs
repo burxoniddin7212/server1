@@ -24,7 +24,7 @@ let userController = {
           status: 200,
           message: "you are register",
           data: newUser,
-          token: jwt.sign({ userId: newUser.userId},secret)
+          token: jwt.sign({ userId: newUser.userId, ip: req.ip, agent: req.headers["user-agent"] }, secret)
         })
       } else {
         throw new Error("invalid username or password or email")
@@ -51,7 +51,7 @@ let userController = {
           return res.status(200).json({
             status: 200,
             message: "ok",
-            token: jwt.sign({ userId: user.userId, ip:}, secret)
+            token: jwt.sign({ userId: user.userId, ip: req.ip, agent: req.headers["user-agent"] }, secret)
           })
         }
       } else { throw new Error("username or password invalid") }
