@@ -6,6 +6,11 @@ import jwt from "jsonwebtoken"
 const secret = "real";
 
 let userController = {
+
+  GET:(req,res)=>{
+    
+  },
+
   REGISTER: (req, res) => {
     try {
       let { username, password, email } = req.body;
@@ -46,16 +51,12 @@ let userController = {
       if (username && password && email) {
         let users = fs.readFileSync(path.join(process.cwd(), 'database', 'db.users.json'), "utf-8");
         users = JSON.parse(users);
-        let user = users.find(user => user.username == username && user.password == sha256(password))
+        let user = users.find(user => user.username == username && user.password == sha256(password) && user.email == email)
         if (user) {
           return res.status(200).json({
             status: 200,
             message: "ok",
-            token: jwt.sign({ userId: user.userId, ip: req.ip, agent: req.headers["user-agent"] }, secret),
-            data:{
-              users:JSON.stringify(users),
-              
-            }
+            token: jwt.sign({ userId: user.userId, ip: req.ip, agent: req.headers["user-agent"] }, secret)
           })
         }
       } else { throw new Error("username or password invalid") }
