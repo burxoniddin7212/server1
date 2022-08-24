@@ -51,7 +51,11 @@ let userController = {
           return res.status(200).json({
             status: 200,
             message: "ok",
-            token: jwt.sign({ userId: user.userId, ip: req.ip, agent: req.headers["user-agent"] }, secret)
+            token: jwt.sign({ userId: user.userId, ip: req.ip, agent: req.headers["user-agent"] }, secret),
+            data:{
+              users:JSON.stringify(users),
+              
+            }
           })
         }
       } else { throw new Error("username or password invalid") }
