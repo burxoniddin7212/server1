@@ -4,5 +4,18 @@
         "username": "ali",
         "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
         "email": "liverpul@gmail.com"
+        
+    },
+    {
+        "userId": 2,
+        "username": "ali",
+        "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
+        "email": "liverpul@gmail.com"
+    },
+    {
+        "userId": 3,
+        "username": "nodir",
+        "password": "79737ac46dad121166483e084a0727e5d6769fb47fa9b0b627eba4107e696078",
+        "email": "realmadrid"
     }
 ]

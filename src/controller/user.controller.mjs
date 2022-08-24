@@ -7,13 +7,21 @@ const secret = "real";
 
 let userController = {
 
-  GET:(req,res)=>{
-    
+  GET: (req, res) => {
+    let users = fs.readFileSync(path.join(process.cwd(), 'database', 'db.users.json'), "utf-8");
+    users = JSON.parse(users)
+    let message = fs.readFileSync(path.join(process.cwd(), 'database', 'db.massages.json'), "utf-8");
+    message = JSON.parse(message)
+    res.status(200).json({
+      users:users,
+      message:message
+    })
   },
 
   REGISTER: (req, res) => {
     try {
       let { username, password, email } = req.body;
+      console.log(req.files);
       if (username && password && email) {
         let users = fs.readFileSync(path.join(process.cwd(), 'database', 'db.users.json'), "utf-8");
         users = JSON.parse(users)
@@ -25,6 +33,7 @@ let userController = {
         }
         users.push(newUser)
         fs.writeFileSync(path.join(process.cwd(), 'database', 'db.users.json'), JSON.stringify(users, null, 4))
+        img.mv('/')
         res.status(200).json({
           status: 200,
           message: "you are register",
