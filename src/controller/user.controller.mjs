@@ -33,7 +33,7 @@ let userController = {
         }
         users.push(newUser)
         fs.writeFileSync(path.join(process.cwd(), 'database', 'db.users.json'), JSON.stringify(users, null, 4))
-        img.mv('/')
+      //  img.mv('/')
         res.status(200).json({
           status: 200,
           message: "you are register",
